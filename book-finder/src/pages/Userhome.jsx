@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import bgimage from "../assets/bgimage.png";
+//import "tailwind-scrollbar-hide"; // Make sure you installed this plugin
 
 const Userhome = () => {
   const [books, setBooks] = useState([]);
@@ -10,7 +11,7 @@ const Userhome = () => {
   const searchRef = useRef(null);
   const navigate = useNavigate();
 
-  // 🔥 Fetch 12 trending books when page loads
+  // Fetch 12 trending books
   useEffect(() => {
     const fetchTrending = async () => {
       try {
@@ -59,7 +60,7 @@ const Userhome = () => {
       className="min-h-screen bg-cover bg-center text-white"
       style={{ backgroundImage: `url(${bgimage})` }}
     >
-      {/* Fixed Top Header */}
+      {/* Header */}
       <header className="fixed top-0 w-full z-50 bg-black text-white py-3 px-6 flex justify-between items-center shadow-md">
         <h1 className="text-xl font-bold">📚 Book Finder</h1>
         <div className="flex items-center gap-6">
@@ -75,9 +76,9 @@ const Userhome = () => {
         </div>
       </header>
 
-      {/* Banner Section */}
+      {/* Banner */}
       <section className="flex flex-col items-center justify-center text-center py-32 bg-black/60 mt-12">
-        <h2 className="text-4xl text-yellow-400 md:text-5xl font-bold mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-yellow-400">
           Discover Your Next Favorite Book
         </h2>
         <p className="text-lg max-w-2xl mb-6">
@@ -91,30 +92,28 @@ const Userhome = () => {
         </button>
       </section>
 
-      {/* Trending Carousel Section */}
-      <section className="py-12 bg-black/70">
-        <h3 className="text-3xl font-bold text-center mb-8">
+      {/* Trending Carousel */}
+      <section className="py-8 sm:py-12 bg-black/70">
+        <h3 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">
           🔥 Books on Trending
         </h3>
-        <div className="relative overflow-hidden w-full">
-          <div className="flex gap-6 animate-carousel">
+        <div className="relative overflow-x-auto hide-scrollbar  w-full px-4 sm:px-6">
+          <div className="flex gap-4 sm:gap-6 animate-carousel">
             {trendingBooks.map((book, index) => (
               <Link
                 to={`/singlebook/${book.key.replace("/works/", "")}`}
                 key={index}
-                className="flex-shrink-0"
+                className="flex-shrink-0 w-32 sm:w-36 md:w-40 h-48 sm:h-56 md:h-60 bg-white rounded-lg shadow-lg flex items-center justify-center overflow-hidden"
               >
-                <div className="w-40 h-60 bg-white rounded-lg shadow-lg flex items-center justify-center overflow-hidden">
-                  <img
-                    src={
-                      book.cover_i
-                        ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
-                        : "https://via.placeholder.com/150"
-                    }
-                    alt={book.title}
-                    className="max-h-full max-w-full object-contain transition hover:scale-105"
-                  />
-                </div>
+                <img
+                  src={
+                    book.cover_i
+                      ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
+                      : "https://via.placeholder.com/150"
+                  }
+                  alt={book.title}
+                  className="max-h-full max-w-full object-contain transition hover:scale-105"
+                />
               </Link>
             ))}
           </div>
@@ -127,13 +126,13 @@ const Userhome = () => {
           🔎 Search for Books
         </h3>
 
-        <form onSubmit={handleSearch} className="flex justify-center mb-6 gap-3">
+        <form onSubmit={handleSearch} className="flex flex-col sm:flex-row justify-center mb-6 gap-3">
           <input
             type="text"
             placeholder="Search by title..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="px-6 py-4 w-[500px] rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white placeholder-gray-300 text-xl bg-black bg-opacity-60"
+            className="px-6 py-4 w-full sm:w-[500px] rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white placeholder-gray-300 text-xl bg-black bg-opacity-60"
           />
           <button
             type="submit"
@@ -156,8 +155,8 @@ const Userhome = () => {
                 key={index}
                 className="block"
               >
-                <div className="bg-white shadow-md rounded-lg p-4 text-center hover:shadow-lg transition text-black h-[350px] flex flex-col">
-                  <div className="flex justify-center items-center h-[220px] mb-3">
+                <div className="bg-white shadow-md rounded-lg p-4 text-center hover:shadow-lg transition text-black h-[380px] flex flex-col">
+                  <div className="flex justify-center items-center h-[240px] mb-3">
                     <img
                       src={
                         book.cover_i

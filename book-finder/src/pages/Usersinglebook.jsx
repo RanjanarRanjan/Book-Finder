@@ -18,7 +18,7 @@ const Usersinglebook = () => {
   if (!book) {
     return (
       <div
-        className="min-h-screen flex items-center justify-center text-gray-200 text-xl"
+        className="min-h-screen flex items-center justify-center text-gray-200 text-xl bg-cover bg-center"
         style={{ backgroundImage: `url(${bgimage})` }}
       >
         Loading book details...
@@ -32,7 +32,7 @@ const Usersinglebook = () => {
       style={{ backgroundImage: `url(${bgimage})` }}
     >
       {/* Header */}
-      <header className="bg-black bg-opacity-80 text-white py-4 px-6 shadow-md flex justify-between items-center">
+      <header className="bg-black bg-opacity-80 text-white py-4 px-6 shadow-md flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
         <h1 className="text-xl font-bold">📖 Book Details</h1>
         <button
           onClick={() => navigate(-1)}
@@ -43,12 +43,12 @@ const Usersinglebook = () => {
       </header>
 
       {/* Book Content */}
-      <div className="container mx-auto p-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-10">
+      <div className="container mx-auto p-4 md:p-6">
+        <h2 className="text-2xl md:text-4xl font-bold text-center text-yellow-400 mb-8 md:mb-12 px-2">
           {book.title}
         </h2>
 
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-10 bg-black/70 p-6 rounded-xl shadow-lg">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10 bg-black/70 p-4 md:p-6 rounded-xl shadow-lg">
           {/* Cover */}
           <img
             src={
@@ -57,11 +57,11 @@ const Usersinglebook = () => {
                 : "https://via.placeholder.com/250"
             }
             alt={book.title}
-            className="w-[280px] md:w-[320px]  object-cover rounded-lg shadow-xl"
+            className="w-48 md:w-80 lg:w-96 object-cover rounded-lg shadow-xl flex-shrink-0"
           />
 
           {/* Details */}
-          <div className="text-lg space-y-4 max-w-2xl">
+          <div className="text-sm md:text-base space-y-4 md:space-y-6 text-white max-w-full md:max-w-2xl">
             <p>
               <strong className="text-yellow-400">📖 Description:</strong>{" "}
               {typeof book.description === "string"
