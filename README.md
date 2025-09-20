@@ -41,7 +41,7 @@ The app uses the **Open Library API** to search and display book details, along 
 
 ### 1️⃣ Clone the repo
 ```bash
--> git clone https://github.com/your-username/book-finder.git
+-> git clone git@github.com:RanjanarRanjan/Book-Finder.git
 -> cd book-finder
 
 Install dependencies
