@@ -55,5 +55,6 @@ Run the app locally
 🌐 Live Demo
 
 👉 Live App: https://mgrlgh-5173.csb.app/
+👉 YouTube : https://youtu.be/XmbI1eMhL8E
 
 ---
